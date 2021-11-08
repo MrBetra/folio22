@@ -1,0 +1,61 @@
+.footer {
+  width: 100%;
+  max-width: $max-width;
+  margin: 100px auto 0;
+  padding: 40px 40px 60px;
+
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  &__mail {
+    font-size: 28px;
+    font-weight: 300;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+
+    li {
+      padding-left: 30px;
+
+      a {
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: white;
+        font-size: 10px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .circle {
+    position: absolute;
+    bottom: 0;
+    right: 20%;
+    z-index: -1;
+    
+    height: 400px;
+    width: 600px;
+    overflow: hidden;
+
+    .graphic {
+      
+      &::before {
+        content: '';
+        width: 600px;
+        height: 600px;
+        border-radius: 100%;
+        border: 1px solid #CBC4AF;
+        opacity: .3;
+  
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+      }
+    }
+
+  }
+}
