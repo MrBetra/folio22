@@ -8,6 +8,14 @@
   justify-content: space-between;
   position: relative;
 
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
+
+  // position: fixed;
+  // bottom: 0;
+  // z-index: -1;
+
   &__mail {
     font-size: 28px;
     font-weight: 300;
@@ -17,8 +25,17 @@
     display: flex;
     align-items: center;
 
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+      justify-content: center;
+    }
+
     li {
       padding-left: 30px;
+
+      @media screen and (max-width: 1024px) {
+        padding: 30px;
+      }
 
       a {
         text-transform: uppercase;

@@ -39,20 +39,20 @@ export default {
   mounted() {
     let gsap = this.$gsap
     let projet = document.querySelector(".projet")
-    let title = document.querySelector(".projet__title")
-    let description = document.querySelector(".projet__description")
-    let imgContainer = document.querySelector(".projet__img")
-    let img = document.querySelector(".projet__img img")
+    let header = projet.querySelector(".projet__header")
+    let title = projet.querySelector(".projet__title")
+    let description = projet.querySelector(".projet__description")
+    let imgContainer = projet.querySelector(".projet__img")
+    let img = projet.querySelector(".projet__img img")
 
-    let width = projet.getBoundingClientRect().width
-    console.log(width)
-
+    // 
     let tl = gsap.timeline()
     tl.delay(.3)
     .from(title, {y: 25, opacity: 0, duration: 1, ease: "power4.out"}, '.3')
     .from(description, {y: 25, opacity: 0, duration: 1, ease: "power4.out"}, '.45')
-    // .to(img, {width: 1440, duration: 2, ease: "expo.out"})
 
+
+    // Animation big image
     let tl_img = gsap.timeline({
       scrollTrigger: {
         trigger: imgContainer,
@@ -62,10 +62,21 @@ export default {
         // markers: true,
       }
     })
+    tl_img.from(img, { "clip-path": "inset(40% 40% 40% 40%)", opacity: 0 })
 
-    tl_img.from(img, {
-      "clip-path": "inset(40% 40% 40% 40%)",
+    // Animation titre + desc
+    let tl_fade = gsap.timeline({
+      scrollTrigger: {
+        trigger: header,
+        pin: true,
+        pinSpacing: false,
+        start: "top top", // trigger / viewport
+        end: "bottom top", // trigger / viewport
+        scrub: .1,
+      }
     })
+    tl_fade.to(header, {y: -50, scale: .8, opacity: 0.3})
+    tl_fade.to(header, {y: 0, opacity: 0})
   },
 
   transition: {
@@ -113,11 +124,27 @@ export default {
     }
     
     &__title {
-      font-size: 8vw;
+      font-size: 15vw;
       font-weight: 300;
       font-family: $font_secondary;
       text-transform: uppercase;
       text-align: center;
+      position: relative;
+
+      // &:before {
+      //   content: "";
+      //   height: 30vw;
+      //   width: 30vw;
+      //   border-radius: 100%;
+      //   background: $cream;
+      //   opacity: .8;
+
+      //   position: absolute;
+      //   top: 50%;
+      //   left: 50%;
+      //   transform: translate(-50%, -50%);
+      //   z-index: -1;
+      // }
     }
 
     &__description {
@@ -137,7 +164,7 @@ export default {
           object-position: center;
           object-fit: cover;
 
-          opacity: .8;
+          // opacity: .8;
           clip: rect(0, 0, 0, 0);
         }
       }

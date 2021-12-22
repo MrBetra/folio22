@@ -95,5 +95,5 @@ export default {
 </script>
 
 <style lang="scss">
-  
+  // Style from oxfam.vue
 </style>

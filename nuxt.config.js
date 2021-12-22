@@ -52,7 +52,9 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    
+    // { src: '~/plugins/menu/menu.js', mode: 'client' },
+    // { src: '~/plugins/menu/menuItem.js', mode: 'client' },
+    // { src: '~/plugins/menu/utils.js', mode: 'client' }
   ],
   /*
   ** Auto import components
@@ -72,7 +74,8 @@ export default {
   gsap: {
     extraPlugins: {
       // scrollTo: true,
-      scrollTrigger: true
+      scrollTrigger: true,
+      cssRule: true,
     }
   },
 

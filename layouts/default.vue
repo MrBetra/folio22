@@ -30,52 +30,62 @@ export default {
 
   mounted() {
     let gsap = this.$gsap
+    let header = document.querySelector(".topbar")
     let logo = document.querySelector(".topbar__logo")
     let svg = logo.querySelector(".logo")
-
-    console.log(logo)
    
-    let tl = gsap.timeline()
-    tl.from(logo, {opacity: 0, x: 50, duration: .5, ease: "power4.out"})
-    tl.fromTo(svg, {scale: 0, opacity: 0, x: 50, rotation: -24, duration: 2, ease: "power4.out"}, {scale: 1.2, x: 0, rotation: -6, opacity: 1})
-    tl.to(svg, {scale: 1, rotation: 0})
+    // let tl = gsap.timeline()
+    // tl.from(logo, {opacity: 0, duration: 1, scale: 0, ease: "power4.out"})
+    // tl.from(svg, {duration: 1, scale: 10, ease: "power4.out"}, '0')
+
+    // let tl_scroll = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: header,
+    //     pin: true,
+    //     pinSpacing: false,
+    //     start: "top top", // trigger / viewport
+    //     end: "bottom center", // trigger / viewport
+    //     scrub: 1,
+    //   }
+    // })
   }
 }
 
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 
   .topbar {
     position: fixed;
     top: 0;
-    left: 0;
-
-    width: 100%;
-    z-index: 99;
+    z-index: 999;
+    
     
     &__wrapper {
       position: relative;
-      width: 100%;
-      max-width: $max-width;
-      margin: 0 auto;
-      
+      width: max-content;
       color: white;
       padding: 40px;
+
+      display: flex;
     }
 
     &__logo {
-      display: inline-block;
-
+      position: relative;
 
       .link {
         display: flex;
+        justify-content: center;
         align-items: center;
       }
 
       .logo svg {
         transition: transform .3s ease-in-out;
+
+        path {
+          fill: rgba(white, .9);
+        }
       }
 
       &:hover,
@@ -85,7 +95,7 @@ export default {
         }
 
         .logo svg {
-          transform: scale(1.1) rotate(-6deg) !important;
+          transform: scale(1.05) rotate(-6deg) !important;
         }
       }
     }
